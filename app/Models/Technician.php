@@ -31,4 +31,9 @@ class Technician extends Model
     {
         return $this->hasMany(Service::class);
     }
+
+    public function clicks()
+    {
+        return $this->hasMany(TechnicianClick::class);
+    }
 }
