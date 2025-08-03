@@ -19,3 +19,4 @@ yarn-error.log
 composer.lock
 /public/index.php
 /public/robots.txt
+.env
