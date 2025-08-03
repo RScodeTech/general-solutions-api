@@ -1,0 +1,57 @@
+{
+  "data": "2025-05-17",
+  "eventos": [
+    {
+      "nome": "Arraial dos Amigos 2025",
+      "local": "Chácara San Diego",
+      "endereco": "Chácara San Diego, Caruaru",
+      "cidade": "Caruaru",
+      "estilo": "Forró / Romântico",
+      "musica_ao_vivo": true,
+      "horario": "A partir das 20h",
+      "ingresso": "A confirmar",
+      "latitude": -8.2826,
+      "longitude": -35.9751,
+      "imagem": null
+    },
+    {
+      "nome": "3ª Corrida Shopping Difusora",
+      "local": "Shopping Difusora",
+      "endereco": "Av. Agamenon Magalhães, Maurício de Nassau, Caruaru",
+      "cidade": "Caruaru",
+      "estilo": "Esporte / Corrida de Rua",
+      "musica_ao_vivo": false,
+      "horario": "Concentração às 17h30, Largada às 18h30",
+      "ingresso": "R$ 130 + 1kg de alimento",
+      "latitude": -8.2826,
+      "longitude": -35.9751,
+      "imagem": null
+    },
+    {
+      "nome": "II São João do Reencontro",
+      "local": "AABB Caruaru",
+      "endereco": "Rua AABB, Caruaru",
+      "cidade": "Caruaru",
+      "estilo": "Forró / Tradicional",
+      "musica_ao_vivo": true,
+      "horario": "A partir das 20h",
+      "ingresso": "A confirmar",
+      "latitude": -8.2826,
+      "longitude": -35.9751,
+      "imagem": null
+    },
+    {
+      "nome": "São João na Roça – Taquara de Cima",
+      "local": "Comunidade de Taquara de Cima",
+      "endereco": "Taquara de Cima, Caruaru",
+      "cidade": "Caruaru",
+      "estilo": "Forró / Cultura Popular",
+      "musica_ao_vivo": true,
+      "horario": "A partir das 19h",
+      "ingresso": "Gratuito",
+      "latitude": -8.2826,
+      "longitude": -35.9751,
+      "imagem": null
+    }
+  ]
+}
