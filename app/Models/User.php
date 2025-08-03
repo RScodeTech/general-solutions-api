@@ -22,7 +22,7 @@ class User extends Authenticatable
         'email',
         'google_id',
         'termo',
-        'imagem',
+        'image',
         'localizacao',
         'aniversario',
         'bio',

@@ -99,7 +99,7 @@ class AuthController extends Controller
                     "id" => $user->id,
                     "name" => $user->name,
                     "email" => $user->email,
-                    "email" => $user->imagem,
+                    "email" => $user->image,
                     "token" => $token
                 ),
                 "message" => "Login completed successfully."
