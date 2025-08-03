@@ -1,13 +1,10 @@
 <?php
 
-use App\Http\Controllers\AmigoController;
+
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\EventoController;
-use App\Http\Controllers\MessageController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TechnicianClickController;
 use App\Http\Controllers\TechnicianController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +27,7 @@ Route::group(['middleware' => ['JWTToken']], function () {
     Route::put('user/{id}', [AuthController::class, 'update']);
 
     Route::post('technicians/{id}/click', [TechnicianClickController::class, 'store']);
+    Route::get('dashboard', [DashboardController::class, 'index']);
 });
 Route::apiResource('technicians', TechnicianController::class);
 
