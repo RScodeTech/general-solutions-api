@@ -27,8 +27,8 @@ Route::group(['middleware' => ['JWTToken']], function () {
     Route::put('user/{id}', [AuthController::class, 'update']);
 
     Route::post('technicians/{id}/click', [TechnicianClickController::class, 'store']);
-    Route::get('dashboard', [DashboardController::class, 'index']);
 });
+Route::get('dashboard', [DashboardController::class, 'index']);
 Route::apiResource('technicians', TechnicianController::class);
 
 Broadcast::routes(['middleware' => ['JWTToken']]);
