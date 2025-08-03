@@ -104,12 +104,12 @@ class TechnicianController extends Controller
         }
 
         $fullAddress = "{$validated['address']}, {$validated['city']}, {$validated['state']}";
+
         $results = app(GeocodingService::class)->getCoordinates($fullAddress);
 
-        if (!$results->isEmpty()) {
-            $coordinates = $results->first()->getCoordinates();
-            $validated['latitude'] = $coordinates->getLatitude();
-            $validated['longitude'] = $coordinates->getLongitude();
+        if ($results) {
+            $validated['latitude'] = $results["lat"];
+            $validated['longitude'] = $results["lng"];
         }
 
         $technician = Technician::create($validated);
@@ -173,12 +173,12 @@ class TechnicianController extends Controller
         }
 
         $fullAddress = "{$validated['address']}, {$validated['city']}, {$validated['state']}";
+     
         $results = app(GeocodingService::class)->getCoordinates($fullAddress);
 
-        if (!$results->isEmpty()) {
-            $coordinates = $results->first()->getCoordinates();
-            $validated['latitude'] = $coordinates->getLatitude();
-            $validated['longitude'] = $coordinates->getLongitude();
+        if ($results) {
+            $validated['latitude'] = $results["lat"];
+            $validated['longitude'] = $results["lng"];
         }
 
         $technician->update($validated);
