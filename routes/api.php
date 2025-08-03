@@ -4,6 +4,7 @@ use App\Http\Controllers\AmigoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\TechnicianController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Broadcast;
@@ -27,5 +28,6 @@ Route::group(['middleware' => ['JWTToken']], function () {
     Route::get('user/{id}', [AuthController::class, 'show']);
     Route::put('user/{id}', [AuthController::class, 'update']);
 });
+Route::apiResource('technicians', TechnicianController::class);
 
 Broadcast::routes(['middleware' => ['JWTToken']]);
