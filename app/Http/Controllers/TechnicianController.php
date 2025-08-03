@@ -29,7 +29,7 @@ class TechnicianController extends Controller
         $userLng = $request->lng;
         $term = $request->term;
     
-        $technicians = Technician::with('services')->get()->filter(function ($tech) use ($userLat, $userLng, $term) {
+        $technicians = Technician::with(['services', 'clicks'])->get()->filter(function ($tech) use ($userLat, $userLng, $term) {
             $techLat = $tech->latitude;
             $techLng = $tech->longitude;
     
@@ -129,7 +129,7 @@ class TechnicianController extends Controller
     public function show(Technician $technician)
     {
         return response()->json([
-            "data" => $technician->load('services'),
+            "data" => $technician->load(['services', 'clicks']),
             "message" => "Tecnico listado com sucesso."
         ], 200);
     }
@@ -191,7 +191,7 @@ class TechnicianController extends Controller
         }
 
         return response()->json([
-            "data" => $technician->load('services'),
+            "data" => $technician->load(['services', 'clicks']),
             "message" => "Tecnico atualizado com sucesso."
         ], 200);
     }
