@@ -99,7 +99,7 @@ class AuthController extends Controller
                     "id" => $user->id,
                     "name" => $user->name,
                     "email" => $user->email,
-                    "email" => $user->image,
+                    "image" => $user->image,
                     "token" => $token
                 ),
                 "message" => "Login completed successfully."
@@ -115,7 +115,7 @@ class AuthController extends Controller
     public function termo(Request $request){
         $user = User::find($request->user_id);
 
-        $user->termo = 1;
+        $user->term = 1;
         $user->save();
 
         return response()->json([
