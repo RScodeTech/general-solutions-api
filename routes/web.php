@@ -24,3 +24,6 @@ Route::get('/remover', function () {
 Route::get('/politica-privacidade', function () {
     return view('politica-privacidade');
 });
+
+Route::view('/technicians', 'technicians');
+Route::view('/technicians-create', 'technicians-create')->name('technicians.create');
