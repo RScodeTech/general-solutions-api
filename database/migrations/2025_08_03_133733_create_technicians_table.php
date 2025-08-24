@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('dmv')->nullable();
             $table->string('state_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

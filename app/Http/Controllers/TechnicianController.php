@@ -14,8 +14,8 @@ class TechnicianController extends Controller
     {
         try {
             $request->validate([
-                'lat' => 'required|numeric',
-                'lng' => 'required|numeric',
+                'lat' => 'nullable|numeric',
+                'lng' => 'nullable|numeric',
                 'term' => 'nullable|string',
             ]);   
         } catch (ValidationException $e) {
@@ -24,39 +24,50 @@ class TechnicianController extends Controller
                 'errors' => $e->errors(),
             ], 422);
         }
+        
+        if(isset($request->lat) && isset($request->lng)){
+            $userLat = $request->lat;
+            $userLng = $request->lng;
+            $term = $request->term;
+        
+            $technicians = Technician::with(['services', 'clicks'])->get()->filter(function ($tech) use ($userLat, $userLng, $term) {
+                $techLat = $tech->latitude;
+                $techLng = $tech->longitude;
+        
+                $distance = $this->haversine($userLat, $userLng, $techLat, $techLng);
+             
+                if ($distance > 5) return false;
+
+                $tech->distance = (int) $distance;
+        
+                if ($term) {
+                    $matchTech = str_contains(strtolower($tech->name), strtolower($term));
+                    $matchService = $tech->services->contains(function ($service) use ($term) {
+                        return str_contains(strtolower($service->name), strtolower($term));
+                    });
+        
+                    return $matchTech || $matchService;
+                }
+        
+                return true;
+            })->values();
     
-        $userLat = $request->lat;
-        $userLng = $request->lng;
-        $term = $request->term;
-    
-        $technicians = Technician::with(['services', 'clicks'])->get()->filter(function ($tech) use ($userLat, $userLng, $term) {
-            $techLat = $tech->latitude;
-            $techLng = $tech->longitude;
-    
-            $distance = $this->haversine($userLat, $userLng, $techLat, $techLng);
-            if ($distance > 10) return false;
-    
-            if ($term) {
-                $matchTech = str_contains(strtolower($tech->name), strtolower($term));
-                $matchService = $tech->services->contains(function ($service) use ($term) {
-                    return str_contains(strtolower($service->name), strtolower($term));
-                });
-    
-                return $matchTech || $matchService;
-            }
-    
-            return true;
-        });
+            return response()->json([
+                "data" => array_values($technicians->toArray()),
+                "message" => "Tecnicos listados com sucesso."
+            ], 200);
+        }
 
         return response()->json([
-            "data" => array_values($technicians->toArray()),
-            "message" => "Tecnico cadastrado com sucesso."
-        ], 201);
+            "data" => Technician::with(['services', 'clicks'])->get(),
+            "message" => "Tecnicos listados com sucesso."
+        ], 200);
+       
     }
     
     private function haversine($lat1, $lon1, $lat2, $lon2)
     {
-        $earthRadius = 6371; // km
+        $earthRadius = 3959; // milhas
     
         $dLat = deg2rad($lat2 - $lat1);
         $dLon = deg2rad($lon2 - $lon1);
