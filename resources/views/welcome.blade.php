@@ -599,7 +599,7 @@
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <a class="btn btn-ghost" href="#" aria-label="Coming soon on App Store"> App Store</a>
         <a class="btn btn-ghost" href="#" aria-label="Coming soon on Google Play">▶ Google Play</a>
-        <a class="btn btn-primary" href="https://bioemfoco.com/technicians-create" target="_blank" rel="noopener">I want to be a technician</a>
+        <a class="btn btn-primary" href="/technicians-create" target="_blank" rel="noopener">I want to be a technician</a>
       </div>
     </div>
   </section>
