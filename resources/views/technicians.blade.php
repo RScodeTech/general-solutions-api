@@ -10,7 +10,7 @@
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../public/style.css">
 
 </head>
 <body>
