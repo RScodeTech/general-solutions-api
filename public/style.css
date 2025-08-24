@@ -1,0 +1,299 @@
+/* =========================================================
+   General Solutions – Tema Unificado (Dashboard + Create)
+   Arquivo: style-gs.css
+   ========================================================= */
+
+/* ---------- Variáveis do Tema ---------- */
+:root {
+    --gs-primary: #e8431e; /* cor principal (laranja) */
+    --gs-accent: #ff8c69; /* tom claro para gradientes */
+    --gs-bg: #f6f7fb; /* fundo da aplicação */
+    --gs-card: #ffffff; /* fundo dos cards */
+    --gs-dark: #0b1220; /* texto forte */
+    --gs-muted: #64748b; /* texto sutil */
+    --gs-border: #e5e7eb; /* bordas suaves */
+    --gs-shadow: 0 10px 30px rgba(2, 8, 23, 0.06);
+    --gs-radius: 16px; /* raio padrão */
+}
+
+/* ---------- Base/Reset leve ---------- */
+html {
+    box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+body {
+    background: var(--gs-bg);
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Open Sans",
+        "Helvetica Neue", Arial, "Noto Sans";
+}
+
+/* Links e focos acessíveis */
+a {
+    color: var(--gs-primary);
+    text-decoration: none;
+}
+a:hover {
+    opacity: 0.9;
+}
+:focus-visible {
+    outline: 2px solid var(--gs-primary);
+    outline-offset: 2px;
+}
+
+/* ---------- Topbar / Header ---------- */
+/* use .gs-top no dashboard e .gs-nav no create – ambos compartilham o estilo */
+.gs-top,
+.gs-nav {
+    background: linear-gradient(135deg, var(--gs-primary), var(--gs-accent));
+    color: #fff;
+    border: 0;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 10px 30px rgba(232, 67, 30, 0.25);
+}
+.gs-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+}
+.gs-brand .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--gs-primary);
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+}
+
+/* ---------- Cards / Containers ---------- */
+.gs-card {
+    border: 0;
+    background: var(--gs-card);
+    border-radius: var(--gs-radius);
+    box-shadow: var(--gs-shadow);
+}
+.shadow-soft {
+    box-shadow: var(--gs-shadow);
+}
+.rounded-2xl {
+    border-radius: var(--gs-radius);
+}
+
+/* ---------- Tipografia utilitária ---------- */
+.text-muted-gs {
+    color: var(--gs-muted) !important;
+}
+.text-strong {
+    color: var(--gs-dark) !important;
+}
+
+/* ---------- Botões (primário e variantes) ---------- */
+.btn-primary {
+    background: linear-gradient(135deg, var(--gs-primary), var(--gs-accent));
+    border: 0;
+    box-shadow: 0 8px 20px rgba(232, 67, 30, 0.25);
+}
+.btn-primary:hover {
+    filter: brightness(0.98);
+}
+.btn-outline-secondary {
+    border-radius: 999px;
+    border-color: var(--gs-border);
+}
+
+/* ---------- Inputs / Formulários ---------- */
+.form-control,
+.form-select {
+    border-radius: 12px;
+    border-color: var(--gs-border);
+}
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--gs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(232, 67, 30, 0.15);
+}
+.input-group-text {
+    border-radius: 12px 0 0 12px;
+    background: #f8fafc;
+    color: #334155;
+    border-color: var(--gs-border);
+}
+.help {
+    font-size: 0.85rem;
+    color: var(--gs-muted);
+}
+
+/* ---------- Seções com badge/título (Create) ---------- */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 1.25rem 0 0.75rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+.section-title .badge {
+    background: rgba(232, 67, 30, 0.12);
+    color: var(--gs-primary);
+    border: 1px solid rgba(232, 67, 30, 0.25);
+    border-radius: 999px;
+}
+
+/* ---------- Stepper (Create) ---------- */
+.stepper {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 14px 18px;
+    background: #fff7f5;
+    border-bottom: 1px solid #ffebe6;
+}
+.step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #7a271a;
+    font-weight: 600;
+    background: #ffffff;
+    border: 1px dashed #ffd5c8;
+    padding: 6px 10px;
+    border-radius: 999px;
+}
+.step[data-active="true"] {
+    border-style: solid;
+    border-color: var(--gs-primary);
+    color: #4a1d12;
+    box-shadow: 0 4px 12px rgba(232, 67, 30, 0.15);
+}
+
+/* ---------- Pílulas de serviço (Create) ---------- */
+.service-pill {
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: #fff;
+}
+
+/* ---------- Métricas (Dashboard) ---------- */
+.metric {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.metric .icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: #fff3ef;
+    color: var(--gs-primary);
+    box-shadow: inset 0 0 0 1px rgba(232, 67, 30, 0.15);
+}
+.metric .value {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+.metric small {
+    color: var(--gs-muted);
+}
+
+/* ---------- Destaque (Dashboard) ---------- */
+.highlight {
+    border-left: 6px solid var(--gs-primary);
+    background: #fff5f2;
+    border-radius: 12px;
+}
+
+/* ---------- Filtro (Dashboard) ---------- */
+.filter-bar {
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 6px 20px rgba(2, 8, 23, 0.05);
+}
+
+/* ---------- Tabelas (Dashboard) ---------- */
+.table-wrap {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(2, 8, 23, 0.05);
+    overflow: hidden;
+}
+.table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #fff;
+    border-bottom: 1px solid #eef2f7;
+}
+.badge-soft {
+    background: #fff3ef;
+    color: var(--gs-primary);
+    border: 1px solid rgba(232, 67, 30, 0.2);
+    border-radius: 999px;
+}
+
+/* ---------- Skeletons / Estados (Dashboard) ---------- */
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background: #eef1f6;
+    border-radius: 8px;
+}
+.skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.5),
+        transparent
+    );
+    transform: translateX(-100%);
+    animation: gs-loading 1.2s infinite;
+}
+@keyframes gs-loading {
+    to {
+        transform: translateX(100%);
+    }
+}
+
+.empty,
+.error {
+    border: 1px dashed #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    color: #6b7280;
+    background: #fafafa;
+}
+
+/* ---------- Utilitários ---------- */
+.opacity-75 {
+    opacity: 0.75;
+}
+.w-44px {
+    width: 44px;
+}
+.h-44px {
+    height: 44px;
+}
+.max-h-60vh {
+    max-height: 60vh;
+}
+.grid-center {
+    display: grid;
+    place-items: center;
+}

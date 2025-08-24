@@ -162,8 +162,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    const API_DASHBOARD = "https://bioemfoco.com/api/dashboard";
-    const API_TECHS     = "https://bioemfoco.com/api/technicians";
+    const API_DASHBOARD = "https://www.generalsolutionsclub.com/api/dashboard"";
+    const API_TECHS     = "https://www.generalsolutionsclub.com/api/technicians";
 
     const elUsers    = document.getElementById("total_users_skel");
     const elTechs    = document.getElementById("total_technicians_skel");
