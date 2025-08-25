@@ -6,13 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-
   <!-- Lucide (ícones) -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="../public/style.css">
-
-
-   
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
@@ -31,19 +27,30 @@
 
   <div class="container my-5" style="max-width:980px">
     <div class="card gs-card">
-      <!-- Stepper mini -->
+      <!-- Stepper mini (sem Documentos; Serviços -> Profissões) -->
       <div class="stepper">
         <div class="step" data-active="true"><i data-lucide="user"></i> Dados</div>
         <div class="step"><i data-lucide="map-pin"></i> Localização</div>
-        <div class="step"><i data-lucide="id-card"></i> Documentos</div>
-        <div class="step"><i data-lucide="settings-2"></i> Serviços</div>
+        <div class="step"><i data-lucide="briefcase"></i> Profissões</div>
       </div>
 
       <div class="card-body p-4 p-lg-5">
+
         <!-- Alertas -->
         <div id="alertBox" class="alert d-none" role="alert"></div>
 
         <form id="technicianForm" enctype="multipart/form-data" novalidate>
+
+          <div class="p-3 mb-4 border rounded bg-light">
+            <h6 class="mb-1 d-flex align-items-center">
+              <i data-lucide="map-pin" class="me-2"></i>
+              Área de atuação
+            </h6>
+            <p class="mb-0 text-muted">
+              Ao se cadastrar, sua área de atuação será definida como um 
+              <strong>raio de 20 miles</strong> a partir do endereço informado.
+            </p>
+          </div>
           <!-- Dados Pessoais -->
           <div class="d-flex align-items-center gap-2 section-title">
             <span class="badge rounded-pill"><i data-lucide="user"></i> Dados Pessoais</span>
@@ -73,18 +80,11 @@
                 <input type="email" class="form-control" name="email" required placeholder="email@exemplo.com" />
               </div>
             </div>
-            <div class="col-md-6">
-              <label class="form-label d-flex align-items-center gap-2">Distância <span class="help">(km)</span></label>
-              <div class="input-group">
-                <span class="input-group-text"><i data-lucide="route"></i></span>
-                <input type="number" step="0.01" class="form-control" name="distance" placeholder="Ex.: 25" />
-              </div>
-            </div>
-          </div>
+    
 
           <!-- Localização -->
           <div class="d-flex align-items-center gap-2 section-title">
-            <span class="badge rounded-pill"><i data-lucide="map-pin"></i> Localização</span>
+            <span class="badge rounded-pill"><i data-lucide="map-pin"></i> Endereço base / Área de Atuação </span>
           </div>
           <div class="row g-3 mb-2">
             <div class="col-md-6">
@@ -119,43 +119,15 @@
             </div>
           </div>
 
-          <!-- Documentos -->
-          <div class="d-flex align-items-center gap-2 section-title">
-            <span class="badge rounded-pill"><i data-lucide="id-card"></i> Documentos</span>
-          </div>
-          <div class="row g-3 mb-4">
-            <div class="col-md-4">
-              <label class="form-label">SSN</label>
-              <div class="input-group">
-                <span class="input-group-text"><i data-lucide="shield"></i></span>
-                <input type="text" class="form-control" name="ssn" placeholder="XXX-XX-XXXX" />
-              </div>
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">DMV</label>
-              <div class="input-group">
-                <span class="input-group-text"><i data-lucide="car"></i></span>
-                <input type="text" class="form-control" name="dmv" placeholder="Registro/License" />
-              </div>
-            </div>
-            <div class="col-md-4">
-              <label class="form-label">State ID</label>
-              <div class="input-group">
-                <span class="input-group-text"><i data-lucide="badge-check"></i></span>
-                <input type="text" class="form-control" name="state_id" placeholder="Identificação estadual" />
-              </div>
-            </div>
-          </div>
-
           <!-- Detalhes -->
           <div class="d-flex align-items-center gap-2 section-title">
             <span class="badge rounded-pill"><i data-lucide="file-text"></i> Detalhes</span>
           </div>
           <div class="row g-3 mb-4">
             <div class="col-12">
-              <label class="form-label">Descrição</label>
-              <textarea class="form-control" name="description" rows="3" placeholder="Conte um pouco sobre suas especialidades, certificações, alcance etc."></textarea>
-              <div class="help mt-1">Dica: destaque serviços, anos de experiência e cidades atendidas.</div>
+              <label class="form-label">Serviços prestados</label>
+              <textarea class="form-control" name="description" rows="3" placeholder="Descreva os serviços que você realiza, experiência e alcance."></textarea>
+              <div class="help mt-1">Dica: destaque tipos de serviços, anos de experiência e cidades atendidas.</div>
             </div>
             <div class="col-md-6">
               <label class="form-label">Imagem</label>
@@ -164,29 +136,92 @@
             </div>
           </div>
 
-          <!-- Serviços -->
+          <!-- Profissões (multiselect) -->
           <div class="d-flex align-items-center gap-2 section-title">
-            <span class="badge rounded-pill"><i data-lucide="wrench"></i> Serviços</span>
+            <span class="badge rounded-pill"><i data-lucide="briefcase"></i> Profissões</span>
           </div>
 
-          <div id="servicos-container" class="mb-2">
-            <div class="row g-2 align-items-center service-row">
-              <div class="col-md-11">
-                <div class="service-pill">
-                  <input type="text" class="form-control border-0" name="services[0][name]" placeholder="Ex.: Encanamento, Eletricista, Limpeza pós-obra" />
+          <div class="mb-2">
+            <p class="text-muted mb-2">Selecione até <strong>3</strong> profissões.</p>
+            <div id="profissoes-container" class="row row-cols-1 row-cols-md-2 g-2">
+              <!-- Cada item é um checkbox Bootstrap-like -->
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input profession-check" type="checkbox" value="Eletricista" id="prof-eletricista">
+                  <label class="form-check-label" for="prof-eletricista">Eletricista</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input profession-check" type="checkbox" value="Encanador" id="prof-encanador">
+                  <label class="form-check-label" for="prof-encanador">Encanador</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input profession-check" type="checkbox" value="Pintor" id="prof-pintor">
+                  <label class="form-check-label" for="prof-pintor">Pintor</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input profession-check" type="checkbox" value="Pedreiro" id="prof-pedreiro">
+                  <label class="form-check-label" for="prof-pedreiro">Pedreiro</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input profession-check" type="checkbox" value="Marceneiro" id="prof-marceneiro">
+                  <label class="form-check-label" for="prof-marceneiro">Marceneiro</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input profession-check" type="checkbox" value="Jardineiro" id="prof-jardineiro">
+                  <label class="form-check-label" for="prof-jardineiro">Jardineiro</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input profession-check" type="checkbox" value="Técnico de Ar Condicionado" id="prof-ar">
+                  <label class="form-check-label" for="prof-ar">Técnico de Ar Condicionado</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input profession-check" type="checkbox" value="Montador de Móveis" id="prof-montador">
+                  <label class="form-check-label" for="prof-montador">Montador de Móveis</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input profession-check" type="checkbox" value="Serralheiro" id="prof-serralheiro">
+                  <label class="form-check-label" for="prof-serralheiro">Serralheiro</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input profession-check" type="checkbox" value="Gesseiro" id="prof-gesseiro">
+                  <label class="form-check-label" for="prof-gesseiro">Gesseiro</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input profession-check" type="checkbox" value="Azulejista" id="prof-azulejista">
+                  <label class="form-check-label" for="prof-azulejista">Azulejista</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-check">
+                  <input class="form-check-input profession-check" type="checkbox" value="Diarista" id="prof-diarista">
+                  <label class="form-check-label" for="prof-diarista">Diarista</label>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="d-flex gap-2 mb-4">
-            <button type="button" id="add-servico" class="btn btn-outline-secondary">
-              <i data-lucide="plus"></i> Adicionar Serviço
-            </button>
-          </div>
-
           <!-- Ações -->
-          <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center justify-content-between mt-3">
             <p class="footer-note m-0"><i data-lucide="lock"></i> Seus dados são enviados com segurança.</p>
             <button id="submitBtn" type="submit" class="btn btn-primary btn-lg rounded-pill px-4">
               <span class="spinner-border spinner-border-sm me-2 d-none" id="btnSpinner" aria-hidden="true"></span>
@@ -217,7 +252,6 @@
     const alertBox = document.getElementById('alertBox');
     const submitBtn = document.getElementById('submitBtn');
     const btnSpinner = document.getElementById('btnSpinner');
-    const servicesContainer = document.getElementById('servicos-container');
 
     // Toast helper
     const toastEl = document.getElementById('gsToast');
@@ -226,33 +260,6 @@
 
     // Lucide
     document.addEventListener('DOMContentLoaded', () => { lucide.createIcons(); });
-
-    // Add/Remove Serviço
-    let serviceIndex = 1;
-    document.getElementById('add-servico').addEventListener('click', () => {
-      const row = document.createElement('div');
-      row.className = 'row g-2 align-items-center service-row mt-2';
-      row.innerHTML = `
-        <div class="col-md-11">
-          <div class="service-pill d-flex align-items-center gap-2">
-            <input type="text" class="form-control border-0" name="services[${serviceIndex}][name]" placeholder="Nome do Serviço" />
-          </div>
-        </div>
-        <div class="col-md-1 d-flex justify-content-end">
-          <button type="button" class="btn btn-outline-danger btn-sm rounded-pill remove-servico">
-            <i data-lucide="x"></i>
-          </button>
-        </div>`;
-      servicesContainer.appendChild(row);
-      serviceIndex++;
-      lucide.createIcons(); // re-render ícones adicionados dinamicamente
-    });
-
-    servicesContainer.addEventListener('click', (e) => {
-      if (e.target.closest('.remove-servico')) {
-        e.target.closest('.service-row').remove();
-      }
-    });
 
     function setLoading(loading){
       submitBtn.disabled = loading;
@@ -270,6 +277,19 @@
       toast.show();
     }
 
+    // Limite de 3 profissões
+    const MAX_PROF = 3;
+    const checks = document.querySelectorAll('.profession-check');
+    checks.forEach(chk => {
+      chk.addEventListener('change', () => {
+        const selected = document.querySelectorAll('.profession-check:checked');
+        if (selected.length > MAX_PROF) {
+          chk.checked = false; // desfaz o último que excedeu
+          showToast(`Você pode selecionar no máximo ${MAX_PROF} profissões.`);
+        }
+      });
+    });
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       alertBox.classList.add('d-none');
@@ -283,7 +303,29 @@
       const distance = form.querySelector('[name="distance"]');
       if (distance && distance.value) distance.value = distance.value.replace(',', '.');
 
+      const selectedProfs = Array.from(document.querySelectorAll('.profession-check:checked')).map(i => i.value);
+      if (selectedProfs.length === 0) {
+        showAlert('warning', 'Selecione ao menos 1 profissão.');
+        return;
+      }
+
+      // Monta o FormData e converte profissões -> services[i][name]
       const formData = new FormData(form);
+
+      // Remover chaves 'services[...][name]' se existirem (por segurança)
+      // (varre e guarda para re-adicionar limpo)
+      const toDelete = [];
+      for (const [k] of formData.entries()) {
+        if (k.startsWith('services[') && k.endsWith('][name]')) {
+          toDelete.push(k);
+        }
+      }
+      toDelete.forEach(k => formData.delete(k));
+
+      // Adiciona as profissões como services[i][name]
+      selectedProfs.slice(0, MAX_PROF).forEach((prof, idx) => {
+        formData.append(`services[${idx}][name]`, prof);
+      });
 
       try{
         setLoading(true);
@@ -303,17 +345,6 @@
         showAlert('success', 'Cadastro realizado com sucesso!');
         showToast('Tudo certo! Técnico cadastrado.');
         form.reset();
-
-        // reseta serviços
-        servicesContainer.innerHTML = `
-          <div class="row g-2 align-items-center service-row">
-            <div class="col-md-11">
-              <div class="service-pill">
-                <input type="text" class="form-control border-0" name="services[0][name]" placeholder="Ex.: Encanamento, Eletricista, Limpeza pós-obra" />
-              </div>
-            </div>
-          </div>`;
-        serviceIndex = 1;
 
       }catch(err){
         console.error(err);

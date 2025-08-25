@@ -93,7 +93,7 @@ class TechnicianController extends Controller
                 'address' => 'required',
                 'fone' => 'required',
                 'email' => 'required|email|unique:technicians',
-                'ssn' => 'required|unique:technicians',
+                'ssn' => 'nullable',
                 'dmv' => 'nullable',
                 'state_id' => 'nullable',
                 'services' => 'array',
