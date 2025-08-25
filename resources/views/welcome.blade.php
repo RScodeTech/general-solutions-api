@@ -497,8 +497,8 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow">Find technicians near you</span>
-        <h1>Hire professionals quickly, safely, and transparently.</h1>
+        <span class="eyebrow">Find professionals near you</span>
+        <h1>Hire construction professionals quickly, safely, and transparently.</h1>
         <p>Simple login, accurate geolocation, and verified profiles — all in one app. General Solutions connects those who need with those who solve.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#download">Download the app</a>
@@ -583,7 +583,7 @@
         <div class="step">
           <div class="step-num">3</div>
           <h3>Hire</h3>
-          <p>See the profile, copy the contact, and arrange directly with the technician.</p>
+          <p>See the profile, copy the contact, and arrange directly with the professional.</p>
         </div>
       </div>
     </div>
@@ -594,7 +594,7 @@
     <div class="cta">
       <div>
         <h3>Ready to get started?</h3>
-        <p>Download the app and find trusted technicians near you.</p>
+        <p>Download the app and find construction professionals near you.</p>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <a class="btn btn-ghost" href="#" aria-label="Coming soon on App Store"> App Store</a>
@@ -609,20 +609,20 @@
     <div class="container">
       <div class="section-head">
         <h2>About General Solutions</h2>
-        <p>A platform created to connect those who need a service with those who can deliver.</p>
+        <p>A platform created to connect construction professionals with clients and builders.</p>
       </div>
       <div class="grid-3">
         <div class="card">
           <h3>Mission</h3>
-          <p>To make fast and secure connections between clients and professionals.</p>
+          <p>To create fast connections between construction professionals, clients, and builders.</p>
         </div>
         <div class="card">
           <h3>Vision</h3>
-          <p>To be a reference in local service hiring with impeccable experience.</p>
+          <p>To be the leading digital platform for professional connections in the construction industry.</p>
         </div>
         <div class="card">
           <h3>Values</h3>
-          <p>Transparency, agility, inclusion, and respect for the service community.</p>
+          <p>Transparency, agility, inclusion, and respect for the construction professionals' community.</p>
         </div>
       </div>
     </div>
@@ -634,7 +634,7 @@
       <div class="fgrid">
         <div>
           <div class="foot-brand"><span class="brand-badge">GS</span> General Solutions</div>
-          <p style="margin:12px 0 0;">Connecting clients and technicians with efficiency, trust, and proximity.</p>
+          <p style="margin:12px 0 0;">Connecting clients and construction professionals with speed and proximity.</p>
         </div>
         <div>
           <small>Links</small><br /><br />
@@ -645,8 +645,9 @@
         </div>
         <div>
           <small>Contact</small><br /><br />
-          <a href="mailto:support@generalsolutionsapp.com">support@generalsolutionsapp.com</a><br />
-          <span style="color:#94a3b8">Recife — PE, Brazil</span>
+          <a href="mailto:support@generalsolutionsclub.com">support@generalsolutionsclub.com</a><br />
+          <span style="color:#94a3b8">1661 E SAMPLE RD,POMPANO BEACH FL 33064
+          </span>
         </div>
       </div>
 

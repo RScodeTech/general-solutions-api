@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Usos e Política de Privacidade - General Solutions</title>
+  <title>Terms & Privacy - General Solutions Club</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -23,16 +23,12 @@
       color:#fff; padding:20px; border-radius:0 0 20px 20px;
       box-shadow:0 8px 20px rgba(232,67,30,.25);
     }
-    h1 {
-      font-size:1.8rem; font-weight:700;
-    }
+    h1 { font-size:1.8rem; font-weight:700; }
     section {
       background: var(--gs-card); border-radius:16px;
       padding:30px; margin-bottom:20px; box-shadow:0 6px 20px rgba(2,8,23,.05);
     }
-    h2 {
-      font-size:1.3rem; margin-bottom:10px; color:var(--gs-primary);
-    }
+    h2 { font-size:1.3rem; margin-bottom:10px; color:var(--gs-primary); }
     ul { padding-left: 1.2rem; }
     footer {
       text-align:center; font-size:.9rem; color:var(--gs-muted);
@@ -42,73 +38,161 @@
 </head>
 <body>
   <header class="text-center">
-    <h1>Política de Privacidade e Usos</h1>
-    <p class="mb-0">General Solutions App</p>
+    <h1>General Solutions Club — Terms of Use, Privacy Policy & Disclaimer</h1>
+    <p class="mb-0">General Solutions Club (the “Platform”)</p>
   </header>
 
   <main class="container my-4">
 
     <section>
-      <p><strong>Data de Vigência:</strong> 24 de julho de 2025</p>
-      <p>A General Solutions ("nós", "nosso" ou "nos") respeita a sua privacidade e está comprometida em protegê-la. 
-      Esta Política de Privacidade explica como coletamos, usamos e protegemos suas informações ao utilizar nosso app
-      para conectar prestadores de serviços e clientes na Flórida.</p>
+      <p><strong>Last updated:</strong> July 24, 2025</p>
+      <p>
+        This document sets forth the Terms of Use, Privacy Policy, and Disclaimer governing the use of the General Solutions Club application
+        (“the Platform”). By registering or using the Platform, you acknowledge that you have read, understood, and agreed to all provisions contained herein.
+      </p>
     </section>
 
     <section>
-      <h2>1. Informações que Coletamos</h2>
+      <h2>1. Purpose</h2>
+      <p>
+        General Solutions Club is a digital platform created to help professionals in the construction industry promote their services.
+        The Platform acts solely as a catalog of contacts, providing visibility for service providers.
+      </p>
+      <p>
+        All interactions, negotiations, contracts, or relationships established between users are the sole responsibility of the users themselves.
+        General Solutions Club does not participate in, guarantee, or mediate any agreements or services.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. User Registration</h2>
       <ul>
-        <li><strong>Informações Pessoais:</strong> nome, telefone, e-mail e localização (quando fornecida).</li>
-        <li><strong>Dados de Uso:</strong> interações no app, preferências e informações do dispositivo (não identificáveis).</li>
+        <li>Registration is free and may be completed by both clients and service providers.</li>
+        <li>Users must provide accurate and updated information.</li>
+        <li>Each user is solely responsible for the information provided.</li>
       </ul>
     </section>
 
     <section>
-      <h2>2. Como Usamos Suas Informações</h2>
+      <h2>3. User Responsibilities</h2>
       <ul>
-        <li>Conectar você a prestadores de serviços e clientes.</li>
-        <li>Melhorar nossos serviços e desempenho do app.</li>
-        <li>Comunicar atualizações ou oportunidades relevantes.</li>
+        <li>The Platform is not responsible for unsolicited or inappropriate contacts that may occur outside its environment.</li>
+        <li>Any negotiation, agreement, service delivery, or payment is the exclusive responsibility of the users involved.</li>
+        <li>Users must act in good faith, respecting applicable laws and the rights of other users.</li>
       </ul>
     </section>
 
     <section>
-      <h2>3. Compartilhamento de Dados</h2>
-      <p>Não vendemos suas informações pessoais. Podemos compartilhar dados com serviços terceirizados confiáveis
-      (como hospedagem e analytics) estritamente para operação do app.</p>
+      <h2>4. Account Deactivation and Removal</h2>
+      <p>
+        Users may request deactivation of their account at any time by sending an email to
+        <a href="mailto:privacy@generalsolutionsclub.com">privacy@generalsolutionsclub.com</a>.
+      </p>
+      <ul>
+        <li>Deactivation requests will be processed within 10 business days.</li>
+        <li>
+          General Solutions Club reserves the right to remove or deactivate any account at any time and without prior notice,
+          whenever deemed necessary to maintain the integrity and safety of the Platform.
+        </li>
+      </ul>
     </section>
 
     <section>
-      <h2>4. Retenção de Dados</h2>
-      <p>Retemos suas informações pessoais apenas pelo tempo necessário para fornecer nossos serviços ou conforme exigido por lei.</p>
+      <h2>5. Data Use and Privacy</h2>
+      <ul>
+        <li>Personal data collected during registration is used exclusively for the operation of the Platform.</li>
+        <li>
+          Only professional contact information voluntarily provided by the user will be publicly displayed, such as: name, contact phone number,
+          professional email, city, service radius, service description, and portfolio of work.
+        </li>
+        <li>Private registration data (e.g., login credentials, passwords, access logs, or billing information) will not be publicly displayed.</li>
+        <li>By publishing their services, users expressly authorize the public display of their professional contact information on the Platform.</li>
+        <li>
+          General Solutions Club shall not be held liable for third-party actions related to the use of such information,
+          including unsolicited contacts, abusive behavior, or actions outside the intended purpose of the Platform.
+        </li>
+      </ul>
+      <p>
+        For privacy-related requests, users must contact
+        <a href="mailto:privacy@generalsolutionsclub.com">privacy@generalsolutionsclub.com</a>.
+      </p>
     </section>
 
     <section>
-      <h2>5. Direitos do Usuário</h2>
-      <p>Você pode solicitar acesso, atualização ou exclusão de suas informações pessoais enviando um e-mail para: 
-      <a href="mailto:privacy@generalsolutions.com">privacy@generalsolutions.com</a>.</p>
+      <h2>6. User Conduct</h2>
+      <p><strong>Service Providers must:</strong></p>
+      <ul>
+        <li>Fulfill agreements made with clients.</li>
+        <li>Comply with safety standards and applicable laws.</li>
+        <li>Avoid abusive, fraudulent, or misleading practices.</li>
+      </ul>
+      <p><strong>Clients must:</strong></p>
+      <ul>
+        <li>Provide accurate and clear information about the services requested.</li>
+        <li>Respect agreements made with providers.</li>
+        <li>Evaluate services in a fair and honest manner.</li>
+      </ul>
     </section>
 
     <section>
-      <h2>6. Segurança</h2>
-      <p>Implementamos medidas técnicas razoáveis para proteger suas informações, mas nenhum sistema é 100% seguro.</p>
+      <h2>7. Limitation of Liability</h2>
+      <p>
+        General Solutions Club is not responsible for the quality, safety, legality, or execution of any services offered by users.
+        The Platform serves solely as a digital listing space, with no guarantee or endorsement of services.
+        To the maximum extent permitted by law, General Solutions Club disclaims any liability for damages, losses, or disputes
+        arising from interactions between users.
+      </p>
     </section>
 
     <section>
-      <h2>7. Alterações a esta Política</h2>
-      <p>Podemos atualizar esta Política de Privacidade. Quaisquer mudanças serão publicadas no app com a nova data de vigência.</p>
+      <h2>8. Eligibility</h2>
+      <p>The Platform is not intended for individuals under the age of 18. By registering, the user declares that they are at least 18 years old.</p>
     </section>
 
     <section>
-      <p>Ao usar o app General Solutions, você concorda com esta Política de Privacidade.</p>
+      <h2>9. Applicable Law</h2>
+      <p>
+        These Terms shall be governed by and construed in accordance with the laws of the State of Florida, United States,
+        without regard to conflict of law principles.
+      </p>
+    </section>
+
+    <section>
+      <h2>10. Beta Version, Service Radius, Updates, and Paid Features</h2>
+      <ul>
+        <li>The Platform is currently in beta version, under continuous improvement and subject to technical changes.</li>
+        <li>
+          Service providers listed on the Platform generally operate within a radius of approximately 30 km,
+          which may be expanded or reduced at the sole discretion of General Solutions Club.
+        </li>
+        <li>The Platform will undergo constant updates and adjustments.</li>
+        <li>
+          These Terms may be modified at any time. Whenever updates occur, users will be notified by being required
+          to accept the revised Terms upon their next login.
+        </li>
+        <li>
+          At any time, General Solutions Club may introduce paid tools or features, available to users who wish to access
+          exclusive services or resources within the Platform.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <p>
+        By using the Platform, you agree to these Terms of Use, the Privacy Policy, and the Disclaimer above.
+        If you do not agree, please discontinue use of the Platform.
+      </p>
     </section>
 
   </main>
 
   <footer>
-    © 2025 General Solutions · Contato: <a href="mailto:privacy@generalsolutions.com">privacy@generalsolutions.com</a>
+    © 2025 General Solutions Club · Contact: <a href="mailto:privacy@generalsolutionsclub.com">privacy@generalsolutionsclub.com</a>
   </footer>
 
-  <script>lucide?.createIcons()</script>
+  <script>
+    // Only needed if you include Lucide elsewhere; kept harmless here.
+    window.lucide && lucide.createIcons();
+  </script>
 </body>
 </html>
