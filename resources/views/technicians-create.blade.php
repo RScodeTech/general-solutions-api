@@ -8,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <!-- Lucide (ícones) -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../public/style.css">
 </head>
 <body>
 
@@ -41,194 +41,163 @@
 
         <form id="technicianForm" enctype="multipart/form-data" novalidate>
 
+          <!-- Service area info -->
           <div class="p-3 mb-4 border rounded bg-light">
             <h6 class="mb-1 d-flex align-items-center">
               <i data-lucide="map-pin" class="me-2"></i>
-              Área de atuação
+              Service Area
             </h6>
             <p class="mb-0 text-muted">
-              Ao se cadastrar, sua área de atuação será definida como um 
-              <strong>raio de 20 miles</strong> a partir do endereço informado.
+              Your service area will be defined as a <strong>20-mile radius</strong> from the address you provide.
             </p>
           </div>
-          <!-- Dados Pessoais -->
+        
+          <!-- Personal Data -->
           <div class="d-flex align-items-center gap-2 section-title">
-            <span class="badge rounded-pill"><i data-lucide="user"></i> Dados Pessoais</span>
+            <span class="badge rounded-pill"><i data-lucide="user"></i> Personal Information</span>
           </div>
           <div class="row g-3 mb-2">
             <div class="col-md-6">
-              <label class="form-label">Nome Completo</label>
+              <label class="form-label">Full Name</label>
               <div class="input-group">
                 <span class="input-group-text"><i data-lucide="user-round"></i></span>
-                <input type="text" class="form-control" name="name" required placeholder="Ex.: Maria Silva" />
+                <input type="text" class="form-control" name="name" required placeholder="e.g., Maria Silva" />
               </div>
             </div>
             <div class="col-md-6">
-              <label class="form-label">Telefone</label>
+              <label class="form-label">Phone</label>
               <div class="input-group">
                 <span class="input-group-text"><i data-lucide="phone"></i></span>
-                <input type="text" class="form-control" name="fone" required placeholder="(DDD) 90000-0000" />
+                <input type="text" class="form-control" name="fone" required placeholder="(XXX) 90000-0000" />
               </div>
             </div>
           </div>
-
+        
           <div class="row g-3 mb-4">
             <div class="col-md-6">
               <label class="form-label">Email</label>
               <div class="input-group">
                 <span class="input-group-text"><i data-lucide="mail"></i></span>
-                <input type="email" class="form-control" name="email" required placeholder="email@exemplo.com" />
+                <input type="email" class="form-control" name="email" required placeholder="email@example.com" />
               </div>
             </div>
-    
-
-          <!-- Localização -->
+          </div>
+        
+          <!-- Location -->
           <div class="d-flex align-items-center gap-2 section-title">
-            <span class="badge rounded-pill"><i data-lucide="map-pin"></i> Endereço base / Área de Atuação </span>
+            <span class="badge rounded-pill"><i data-lucide="map-pin"></i> Location</span>
           </div>
           <div class="row g-3 mb-2">
             <div class="col-md-6">
-              <label class="form-label">Estado</label>
+              <label class="form-label">State</label>
               <div class="input-group">
                 <span class="input-group-text"><i data-lucide="map"></i></span>
-                <input type="text" class="form-control" name="state" required placeholder="Ex.: FL" />
+                <input type="text" class="form-control" name="state" required placeholder="e.g., FL" />
               </div>
             </div>
             <div class="col-md-6">
-              <label class="form-label">Cidade</label>
+              <label class="form-label">City</label>
               <div class="input-group">
                 <span class="input-group-text"><i data-lucide="building-2"></i></span>
-                <input type="text" class="form-control" name="city" required placeholder="Ex.: Orlando" />
+                <input type="text" class="form-control" name="city" required placeholder="e.g., Orlando" />
               </div>
             </div>
           </div>
           <div class="row g-3 mb-4">
             <div class="col-md-6">
-              <label class="form-label">Endereço</label>
+              <label class="form-label">Address</label>
               <div class="input-group">
                 <span class="input-group-text"><i data-lucide="home"></i></span>
-                <input type="text" class="form-control" name="address" required placeholder="Rua, número" />
+                <input type="text" class="form-control" name="address" required placeholder="Street, number" />
               </div>
             </div>
             <div class="col-md-6">
-              <label class="form-label">Complemento</label>
+              <label class="form-label">Complement</label>
               <div class="input-group">
                 <span class="input-group-text"><i data-lucide="sticky-note"></i></span>
-                <input type="text" class="form-control" name="complement" placeholder="Apto, bloco, ref." />
+                <input type="text" class="form-control" name="complement" placeholder="Apt, block, ref." />
               </div>
             </div>
           </div>
-
-          <!-- Detalhes -->
+        
+          <!-- Details -->
           <div class="d-flex align-items-center gap-2 section-title">
-            <span class="badge rounded-pill"><i data-lucide="file-text"></i> Detalhes</span>
+            <span class="badge rounded-pill"><i data-lucide="file-text"></i> Details</span>
           </div>
           <div class="row g-3 mb-4">
             <div class="col-12">
-              <label class="form-label">Serviços prestados</label>
-              <textarea class="form-control" name="description" rows="3" placeholder="Descreva os serviços que você realiza, experiência e alcance."></textarea>
-              <div class="help mt-1">Dica: destaque tipos de serviços, anos de experiência e cidades atendidas.</div>
+              <label class="form-label">Services Provided</label>
+              <textarea class="form-control" name="description" rows="3" placeholder="Describe your specialties, certifications, and experience."></textarea>
             </div>
             <div class="col-md-6">
-              <label class="form-label">Imagem</label>
+              <label class="form-label">Profile Image</label>
               <input type="file" class="form-control" name="image" accept="image/*" />
-              <div class="help mt-1">PNG/JPG até 5MB.</div>
+              <div class="help mt-1">PNG/JPG up to 5MB.</div>
             </div>
           </div>
-
-          <!-- Profissões (multiselect) -->
+        
+          <!-- Professions -->
           <div class="d-flex align-items-center gap-2 section-title">
-            <span class="badge rounded-pill"><i data-lucide="briefcase"></i> Profissões</span>
+            <span class="badge rounded-pill"><i data-lucide="briefcase"></i> Professions</span>
           </div>
-
-          <div class="mb-2">
-            <p class="text-muted mb-2">Selecione até <strong>3</strong> profissões.</p>
-            <div id="profissoes-container" class="row row-cols-1 row-cols-md-2 g-2">
-              <!-- Cada item é um checkbox Bootstrap-like -->
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input profession-check" type="checkbox" value="Eletricista" id="prof-eletricista">
-                  <label class="form-check-label" for="prof-eletricista">Eletricista</label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input profession-check" type="checkbox" value="Encanador" id="prof-encanador">
-                  <label class="form-check-label" for="prof-encanador">Encanador</label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input profession-check" type="checkbox" value="Pintor" id="prof-pintor">
-                  <label class="form-check-label" for="prof-pintor">Pintor</label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input profession-check" type="checkbox" value="Pedreiro" id="prof-pedreiro">
-                  <label class="form-check-label" for="prof-pedreiro">Pedreiro</label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input profession-check" type="checkbox" value="Marceneiro" id="prof-marceneiro">
-                  <label class="form-check-label" for="prof-marceneiro">Marceneiro</label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input profession-check" type="checkbox" value="Jardineiro" id="prof-jardineiro">
-                  <label class="form-check-label" for="prof-jardineiro">Jardineiro</label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input profession-check" type="checkbox" value="Técnico de Ar Condicionado" id="prof-ar">
-                  <label class="form-check-label" for="prof-ar">Técnico de Ar Condicionado</label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input profession-check" type="checkbox" value="Montador de Móveis" id="prof-montador">
-                  <label class="form-check-label" for="prof-montador">Montador de Móveis</label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input profession-check" type="checkbox" value="Serralheiro" id="prof-serralheiro">
-                  <label class="form-check-label" for="prof-serralheiro">Serralheiro</label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input profession-check" type="checkbox" value="Gesseiro" id="prof-gesseiro">
-                  <label class="form-check-label" for="prof-gesseiro">Gesseiro</label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input profession-check" type="checkbox" value="Azulejista" id="prof-azulejista">
-                  <label class="form-check-label" for="prof-azulejista">Azulejista</label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input profession-check" type="checkbox" value="Diarista" id="prof-diarista">
-                  <label class="form-check-label" for="prof-diarista">Diarista</label>
-                </div>
-              </div>
-            </div>
+          <p class="text-muted mb-2">Select up to <strong>3</strong> professions.</p>
+        
+          <div id="professions-container" class="row row-cols-1 row-cols-md-2 g-2">
+        
+            <!-- General Services -->
+            <div class="col-12"><strong>General Services</strong></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Handyman" id="prof-handyman"> <label for="prof-handyman">Handyman</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="General Contractor" id="prof-contractor"> <label for="prof-contractor">General Contractor</label></div>
+        
+            <!-- Structure & Building -->
+            <div class="col-12 mt-2"><strong>Structure & Building</strong></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Carpenter" id="prof-carpenter"> <label for="prof-carpenter">Carpenter</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Mason" id="prof-mason"> <label for="prof-mason">Mason</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Roofer" id="prof-roofer"> <label for="prof-roofer">Roofer</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Drywall Installer / Finisher" id="prof-drywall"> <label for="prof-drywall">Drywall Installer / Finisher</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Concrete Worker" id="prof-concrete"> <label for="prof-concrete">Concrete Worker</label></div>
+        
+            <!-- Electrical & Plumbing -->
+            <div class="col-12 mt-2"><strong>Electrical & Plumbing</strong></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Electrician" id="prof-electrician"> <label for="prof-electrician">Electrician</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Plumber" id="prof-plumber"> <label for="prof-plumber">Plumber</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="HVAC Technician" id="prof-hvac"> <label for="prof-hvac">HVAC Technician</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Gas Technician" id="prof-gas"> <label for="prof-gas">Gas Technician</label></div>
+        
+            <!-- Finishing & Remodeling -->
+            <div class="col-12 mt-2"><strong>Finishing & Remodeling</strong></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Painter" id="prof-painter"> <label for="prof-painter">Painter</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Flooring Installer" id="prof-flooring"> <label for="prof-flooring">Flooring Installer</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Tile Installer" id="prof-tile"> <label for="prof-tile">Tile Installer</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Cabinet Maker / Installer" id="prof-cabinet"> <label for="prof-cabinet">Cabinet Maker / Installer</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Window & Door Installer" id="prof-window"> <label for="prof-window">Window & Door Installer</label></div>
+        
+            <!-- Outdoor Services -->
+            <div class="col-12 mt-2"><strong>Outdoor Services</strong></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Landscaper" id="prof-landscaper"> <label for="prof-landscaper">Landscaper</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Fence Installer" id="prof-fence"> <label for="prof-fence">Fence Installer</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Deck Builder" id="prof-deck"> <label for="prof-deck">Deck Builder</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Pool Technician" id="prof-pool"> <label for="prof-pool">Pool Technician</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Paver / Driveway Installer" id="prof-paver"> <label for="prof-paver">Paver / Driveway Installer</label></div>
+        
+            <!-- Specialized Services -->
+            <div class="col-12 mt-2"><strong>Specialized Services</strong></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Demolition Worker" id="prof-demolition"> <label for="prof-demolition">Demolition Worker</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Excavator Operator" id="prof-excavator"> <label for="prof-excavator">Excavator Operator</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Welder" id="prof-welder"> <label for="prof-welder">Welder</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Insulation Installer" id="prof-insulation"> <label for="prof-insulation">Insulation Installer</label></div>
+            <div class="col"><input class="form-check-input profession-check" type="checkbox" value="Solar Panel Installer" id="prof-solar"> <label for="prof-solar">Solar Panel Installer</label></div>
+        
           </div>
-
-          <!-- Ações -->
-          <div class="d-flex align-items-center justify-content-between mt-3">
-            <p class="footer-note m-0"><i data-lucide="lock"></i> Seus dados são enviados com segurança.</p>
+          <div class="d-flex align-items-center justify-content-between mt-4">
+            <p class="footer-note m-0"><i data-lucide="lock"></i> Your data is transmitted securely.</p>
             <button id="submitBtn" type="submit" class="btn btn-primary btn-lg rounded-pill px-4">
               <span class="spinner-border spinner-border-sm me-2 d-none" id="btnSpinner" aria-hidden="true"></span>
-              Enviar cadastro
+              Submit Registration
             </button>
           </div>
         </form>
+        
       </div>
     </div>
   </div>
