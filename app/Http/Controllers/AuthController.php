@@ -129,4 +129,16 @@ class AuthController extends Controller
 
         return JWT::encode($data_token, env('APP_KEY'), 'HS256');
     }
+
+    public function destroy(Request $request, $id){
+        $user = User::find($id);
+        
+        UserToken::where("user_id", $id)->delete();
+        $user->delete();
+
+        return response()->json([
+            "data" => null,
+            "message" => "User deleted successfully."
+        ], 200);
+    }
 }

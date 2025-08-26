@@ -25,9 +25,11 @@ Route::group(['middleware' => ['JWTToken']], function () {
     Route::get('/user/termo', [AuthController::class, 'termo']);
     Route::get('user/{id}', [AuthController::class, 'show']);
     Route::put('user/{id}', [AuthController::class, 'update']);
+    Route::delete('user/{id}', [AuthController::class, 'destroy']);
 
     Route::post('technicians/{id}/click', [TechnicianClickController::class, 'store']);
 });
+
 Route::get('dashboard', [DashboardController::class, 'index']);
 Route::apiResource('technicians', TechnicianController::class);
 
