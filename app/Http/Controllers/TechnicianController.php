@@ -36,7 +36,7 @@ class TechnicianController extends Controller
         
                 $distance = $this->haversine($userLat, $userLng, $techLat, $techLng);
              
-                if ($distance > 5) return false;
+                if ($distance > 20) return false;
 
                 $tech->distance = (int) $distance;
         
