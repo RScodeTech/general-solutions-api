@@ -50,7 +50,9 @@ class TechnicianController extends Controller
                 }
         
                 return true;
-            })->values();
+            })
+            ->sortBy('distance')
+            ->values();
     
             return response()->json([
                 "data" => array_values($technicians->toArray()),
