@@ -27,4 +27,6 @@ Route::get('/politica-privacidade', function () {
 
 Route::view('/technicians', 'technicians');
 Route::view('/terms', 'terms');
+Route::view('/contact', 'contact');
+Route::view('/privacy-policy', 'privacy-policy');
 Route::view('/technicians-create', 'technicians-create')->name('technicians.create');
