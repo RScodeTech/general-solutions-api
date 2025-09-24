@@ -214,116 +214,186 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const API_URL = 'https://www.generalsolutionsclub.com/api/technicians';
+<script>
+  // ---- Config ----
+  const API_URL = 'https://www.generalsolutionsclub.com/api/technicians';
 
-    const form = document.getElementById('technicianForm');
-    const alertBox = document.getElementById('alertBox');
-    const submitBtn = document.getElementById('submitBtn');
-    const btnSpinner = document.getElementById('btnSpinner');
+  const form = document.getElementById('technicianForm');
+  const alertBox = document.getElementById('alertBox');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnSpinner = document.getElementById('btnSpinner');
 
-    // Toast helper
-    const toastEl = document.getElementById('gsToast');
-    const toastBody = document.getElementById('gsToastBody');
-    const toast = new bootstrap.Toast(toastEl);
+  // Toast helper
+  const toastEl = document.getElementById('gsToast');
+  const toastBody = document.getElementById('gsToastBody');
+  const toast = new bootstrap.Toast(toastEl);
 
-    // Lucide
-    document.addEventListener('DOMContentLoaded', () => { lucide.createIcons(); });
+  // Lucide
+  document.addEventListener('DOMContentLoaded', () => { lucide.createIcons(); });
 
-    function setLoading(loading){
-      submitBtn.disabled = loading;
-      btnSpinner.classList.toggle('d-none', !loading);
-    }
+  // Small CSS.escape fallback (older browsers)
+  if (typeof CSS === 'undefined' || typeof CSS.escape !== 'function') {
+    window.CSS = window.CSS || {};
+    CSS.escape = function (s) {
+      return String(s).replace(/[^a-zA-Z0-9_\-]/g, '\\$&');
+    };
+  }
 
-    function showAlert(type, message){
-      alertBox.className = `alert alert-${type}`;
-      alertBox.textContent = message;
-      alertBox.classList.remove('d-none');
-    }
+  // ---- UI helpers ----
+  function setLoading(loading){
+    submitBtn.disabled = loading;
+    btnSpinner.classList.toggle('d-none', !loading);
+  }
 
-    function showToast(message){
-      toastBody.textContent = message;
-      toast.show();
-    }
+  function showAlert(type, html){
+    alertBox.className = `alert alert-${type}`;
+    alertBox.innerHTML = html;           // accepts HTML (for list of errors)
+    alertBox.classList.remove('d-none');
+  }
 
-    // Limite de 3 profissões
-    const MAX_PROF = 3;
-    const checks = document.querySelectorAll('.profession-check');
-    checks.forEach(chk => {
-      chk.addEventListener('change', () => {
-        const selected = document.querySelectorAll('.profession-check:checked');
-        if (selected.length > MAX_PROF) {
-          chk.checked = false; // desfaz o último que excedeu
-          showToast(`Você pode selecionar no máximo ${MAX_PROF} profissões.`);
-        }
-      });
-    });
+  function showToast(message){
+    toastBody.textContent = message;
+    toast.show();
+  }
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      alertBox.classList.add('d-none');
+  function clearFieldErrors(){
+    // Remove previous field states/feedback
+    form.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+    form.querySelectorAll('.invalid-feedback[data-auto]').forEach(el => el.remove());
+  }
 
-      if(!form.checkValidity()){
-        form.reportValidity();
-        return;
+  function setFieldError(fieldName, message){
+    // Try by [name="field"]
+    let el = form.querySelector(`[name="${CSS.escape(fieldName)}"]`);
+
+    // Common fallback mapping (adjust if your API uses other keys)
+    if (!el && fieldName === 'phone') el = form.querySelector('[name="fone"]');
+
+    if (el) {
+      el.classList.add('is-invalid');
+      // If there's already a feedback under the same input-group, reuse it; otherwise create one
+      let fb = el.parentElement.querySelector('.invalid-feedback');
+      if (!fb) {
+        fb = document.createElement('div');
+        fb.className = 'invalid-feedback';
+        fb.setAttribute('data-auto', ''); // mark to clear later
+        el.parentElement.appendChild(fb);
       }
+      fb.textContent = String(message);
+    }
+  }
 
-      // normaliza decimal com vírgula
-      const distance = form.querySelector('[name="distance"]');
-      if (distance && distance.value) distance.value = distance.value.replace(',', '.');
-
-      const selectedProfs = Array.from(document.querySelectorAll('.profession-check:checked')).map(i => i.value);
-      if (selectedProfs.length === 0) {
-        showAlert('warning', 'Selecione ao menos 1 profissão.');
-        return;
-      }
-
-      // Monta o FormData e converte profissões -> services[i][name]
-      const formData = new FormData(form);
-
-      // Remover chaves 'services[...][name]' se existirem (por segurança)
-      // (varre e guarda para re-adicionar limpo)
-      const toDelete = [];
-      for (const [k] of formData.entries()) {
-        if (k.startsWith('services[') && k.endsWith('][name]')) {
-          toDelete.push(k);
-        }
-      }
-      toDelete.forEach(k => formData.delete(k));
-
-      // Adiciona as profissões como services[i][name]
-      selectedProfs.slice(0, MAX_PROF).forEach((prof, idx) => {
-        formData.append(`services[${idx}][name]`, prof);
-      });
-
-      try{
-        setLoading(true);
-        showToast('Enviando cadastro…');
-
-        const resp = await fetch(API_URL, { method:'POST', body: formData });
-        const contentType = resp.headers.get('content-type') || '';
-        const payload = contentType.includes('application/json')
-          ? await resp.json().catch(()=> ({}))
-          : await resp.text();
-
-        if(!resp.ok){
-          const msg = typeof payload === 'string' ? payload : (payload.message || 'Não foi possível concluir o cadastro.');
-          throw new Error(msg);
-        }
-
-        showAlert('success', 'Cadastro realizado com sucesso!');
-        showToast('Tudo certo! Técnico cadastrado.');
-        form.reset();
-
-      }catch(err){
-        console.error(err);
-        showAlert('danger', 'Erro ao enviar: ' + err.message);
-        showToast('Erro no envio. Verifique os campos.');
-      }finally{
-        setLoading(false);
-        lucide.createIcons();
+  // ---- Professions limit (max 3) ----
+  const MAX_PROF = 3;
+  const checks = document.querySelectorAll('.profession-check');
+  checks.forEach(chk => {
+    chk.addEventListener('change', () => {
+      const selected = document.querySelectorAll('.profession-check:checked');
+      if (selected.length > MAX_PROF) {
+        chk.checked = false; // undo the last one
+        showToast(`You can select up to ${MAX_PROF} professions.`);
       }
     });
-  </script>
+  });
+
+  // ---- Submit handler ----
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    alertBox.classList.add('d-none');
+    clearFieldErrors();
+
+    if (!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+
+    // normalize decimal with comma -> dot if you ever add distance field
+    const distance = form.querySelector('[name="distance"]');
+    if (distance && distance.value) distance.value = distance.value.replace(',', '.');
+
+    const selectedProfs = Array.from(document.querySelectorAll('.profession-check:checked')).map(i => i.value);
+    if (selectedProfs.length === 0) {
+      showAlert('warning', 'Please select at least one profession.');
+      return;
+    }
+
+    // Build FormData; convert professions -> services[i][name]
+    const formData = new FormData(form);
+
+    // remove any preexisting services[*][name] keys to avoid duplicates
+    const toDelete = [];
+    for (const [k] of formData.entries()) {
+      if (k.startsWith('services[') && k.endsWith('][name]')) toDelete.push(k);
+    }
+    toDelete.forEach(k => formData.delete(k));
+
+    selectedProfs.slice(0, MAX_PROF).forEach((prof, idx) => {
+      formData.append(`services[${idx}][name]`, prof);
+    });
+
+    try{
+      setLoading(true);
+      showToast('Submitting registration…');
+
+      const resp = await fetch(API_URL, { method:'POST', body: formData });
+      const contentType = resp.headers.get('content-type') || '';
+      const payload = contentType.includes('application/json')
+        ? await resp.json().catch(()=> ({}))
+        : await resp.text();
+
+      if (!resp.ok) {
+        let backendMsg = 'Unable to complete the registration.';
+        let fieldErrors = null;
+
+        if (typeof payload === 'object' && payload !== null) {
+          backendMsg = payload.message || backendMsg;
+          // Some backends nest errors under data.errors
+          fieldErrors = payload.errors || (payload.data && payload.data.errors) || null;
+        } else if (typeof payload === 'string' && payload.trim()) {
+          backendMsg = payload;
+        }
+
+        if (fieldErrors && typeof fieldErrors === 'object') {
+          const items = [];
+          Object.entries(fieldErrors).forEach(([field, msgs]) => {
+            const first = Array.isArray(msgs) ? msgs[0] : String(msgs);
+            setFieldError(field, first);
+            items.push(`<li><strong>${field}</strong>: ${first}</li>`);
+          });
+
+          const html =
+            `<div class="fw-semibold mb-1">${backendMsg}</div>` +
+            `<ul class="mb-0 ps-3">${items.join('')}</ul>`;
+
+          showAlert('danger', html);
+          showToast('Validation error. Check the highlighted fields.');
+        } else {
+          showAlert('danger', backendMsg);
+          showToast(backendMsg);
+        }
+
+        // throw to enter catch (keeps flow consistent)
+        throw new Error(backendMsg);
+      }
+
+      // Success
+      showAlert('success', 'Registration completed successfully!');
+      showToast('All good! Technician registered.');
+      form.reset();
+
+    } catch (err) {
+      console.error(err);
+      // If no specific alert was shown yet (e.g., network error), show a generic one
+      if (alertBox.classList.contains('d-none')) {
+        showAlert('danger', 'Error while sending: ' + (err.message || 'Unexpected failure.'));
+      }
+      showToast('Submission failed. Please try again.');
+    } finally {
+      setLoading(false);
+      lucide.createIcons(); // re-render icons if DOM changed
+    }
+  });
+</script>
+
 </body>
 </html>

@@ -162,6 +162,26 @@
 
     <p class="text-center text-muted small mt-3">Dados atualizados via API General Solutions</p>
   </div>
+  <!-- Overlay de senha (gate) – fora do modal -->
+<div id="lockscreen" style="position:fixed;inset:0;display:none;z-index:99999;background:#f8f9fa;">
+  <div style="max-width:360px;margin:10vh auto;padding:24px;background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08);">
+    <div class="d-flex align-items-center gap-2 mb-3">
+      <i data-lucide="lock" style="width:22px;height:22px;"></i>
+      <h5 class="m-0">Área restrita</h5>
+    </div>
+    <p class="text-muted mb-3">Digite a senha para acessar o dashboard.</p>
+
+    <div class="mb-3">
+      <input type="password" id="pwd" class="form-control" placeholder="Senha" autocomplete="off" />
+      <div id="msg" class="invalid-feedback d-block" style="display:none;">Senha incorreta.</div>
+    </div>
+
+    <div class="d-grid gap-2">
+      <button id="enterBtn" class="btn btn-primary">Entrar</button>
+      <button id="leaveBtn" class="btn btn-outline-secondary">Sair</button>
+    </div>
+  </div>
+</div>
 
   <!-- Modal de confirmação -->
   <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
@@ -183,8 +203,59 @@
         </div>
       </div>
     </div>
+    
   </div>
 
+  <script>
+    // --- Simple Gate (senha fixa; uso casual) ---
+    const GATE_PASSWORD = 'gs@2025';              // <-- sua senha
+    const GATE_KEY      = 'gs_dash_unlocked_v1';  // chave sessionStorage
+  
+    function proceed() {
+      const lock = document.getElementById('lockscreen');
+      if (lock) lock.style.display = 'none';
+      loadData(); // só carrega após liberar
+    }
+  
+    function unlockIfNeeded() {
+      if (sessionStorage.getItem(GATE_KEY) === '1') {
+        proceed();
+        return;
+      }
+  
+      const lock = document.getElementById('lockscreen');
+      const input = document.getElementById('pwd');
+      const msg = document.getElementById('msg');
+      const enterBtn = document.getElementById('enterBtn');
+      const leaveBtn = document.getElementById('leaveBtn');
+  
+      if (lock) {
+        lock.style.display = 'block';
+        try { lucide.createIcons(); } catch(_){}   // <-- AJUSTE 1: render ícone do cadeado
+      }
+  
+      function check() {
+        const val = (input?.value || '').trim();
+        if (val === GATE_PASSWORD) {
+          sessionStorage.setItem(GATE_KEY, '1');
+          proceed();
+        } else {
+          if (msg) msg.style.display = 'block';
+          if (input) { input.value = ''; input.focus(); }
+        }
+      }
+  
+      if (enterBtn) enterBtn.onclick = check;
+      if (leaveBtn) leaveBtn.onclick = () => { window.location.href = '/'; };
+      if (input) input.addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+  
+      setTimeout(() => input?.focus(), 100);
+    }
+  
+    // Substitui o antigo gatilho do loadData
+    document.addEventListener('DOMContentLoaded', unlockIfNeeded);
+  </script>
+  
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -391,7 +462,7 @@
       }
     }
 
-    document.addEventListener("DOMContentLoaded", loadData);
+   
   </script>
 </body>
 </html>
